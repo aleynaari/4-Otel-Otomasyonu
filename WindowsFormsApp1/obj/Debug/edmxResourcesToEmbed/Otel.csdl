@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Otel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="OtelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="KullaniciSet" EntityType="Otel.Kullanici" />
+    <EntitySet Name="SubelerSet" EntityType="Otel.Subeler" />
+    <EntitySet Name="MusteriSet" EntityType="Otel.Musteri" />
+  </EntityContainer>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="KullaniciNo" />
+    </Key>
+    <Property Name="KullaniciNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciAd" Type="String" Nullable="true" />
+    <Property Name="Sifre" Type="String" Nullable="true" />
+    <Property Name="AdSoyad" Type="String" Nullable="true" />
+    <Property Name="DTarih" Type="DateTime" Nullable="true" />
+    <Property Name="Telefon" Type="String" Nullable="true" />
+    <Property Name="Mail" Type="String" Nullable="true" />
+    <Property Name="Gorev" Type="String" Nullable="true" />
+    <Property Name="Adres" Type="String" Nullable="true" />
+    <Property Name="Maas" Type="Decimal" Nullable="true" />
+    <Property Name="SubeNo" Type="Int32" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Subeler">
+    <Key>
+      <PropertyRef Name="SubeNo" />
+    </Key>
+    <Property Name="SubeNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CalisanSayisi" Type="Int32" Nullable="true" />
+    <Property Name="Adres" Type="String" Nullable="true" />
+    <Property Name="OdaSayisi" Type="Int32" Nullable="true" />
+    <Property Name="Telefon" Type="String" Nullable="true" />
+    <Property Name="SubeAd" Type="String" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Musteri">
+    <Key>
+      <PropertyRef Name="MusteriNo" />
+    </Key>
+    <Property Name="MusteriNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdSoyad" Type="String" Nullable="true" />
+    <Property Name="DTarih" Type="DateTime" Nullable="true" />
+    <Property Name="Telefon" Type="String" Nullable="true" />
+    <Property Name="Adres" Type="String" Nullable="true" />
+    <Property Name="SubeNo" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

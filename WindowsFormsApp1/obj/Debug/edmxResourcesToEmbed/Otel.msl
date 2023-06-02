@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OtelStoreContainer" CdmEntityContainer="OtelContainer">
+    <EntitySetMapping Name="KullaniciSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Otel.Kullanici)">
+        <MappingFragment StoreEntitySet="KullaniciSet">
+          <ScalarProperty Name="KullaniciNo" ColumnName="KullaniciNo" />
+          <ScalarProperty Name="KullaniciAd" ColumnName="KullaniciAd" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+          <ScalarProperty Name="DTarih" ColumnName="DTarih" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Gorev" ColumnName="Gorev" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="Maas" ColumnName="Maas" />
+          <ScalarProperty Name="SubeNo" ColumnName="SubeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubelerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Otel.Subeler)">
+        <MappingFragment StoreEntitySet="SubelerSet">
+          <ScalarProperty Name="SubeNo" ColumnName="SubeNo" />
+          <ScalarProperty Name="CalisanSayisi" ColumnName="CalisanSayisi" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="OdaSayisi" ColumnName="OdaSayisi" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="SubeAd" ColumnName="SubeAd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MusteriSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Otel.Musteri)">
+        <MappingFragment StoreEntitySet="MusteriSet">
+          <ScalarProperty Name="MusteriNo" ColumnName="MusteriNo" />
+          <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+          <ScalarProperty Name="DTarih" ColumnName="DTarih" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+          <ScalarProperty Name="SubeNo" ColumnName="SubeNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

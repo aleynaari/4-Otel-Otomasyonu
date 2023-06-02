@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="KullaniciSet" EntityType="Model1.Store.KullaniciSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MusteriSet" EntityType="Model1.Store.MusteriSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SubelerSet" EntityType="Model1.Store.SubelerSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="SubelerKullanici" Association="Model1.Store.SubelerKullanici">
+      <End Role="Subeler" EntitySet="SubelerSet" />
+      <End Role="Kullanici" EntitySet="KullaniciSet" />
+    </AssociationSet>
+    <AssociationSet Name="SubelerMusteri" Association="Model1.Store.SubelerMusteri">
+      <End Role="Subeler" EntitySet="SubelerSet" />
+      <End Role="Musteri" EntitySet="MusteriSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="KullaniciSet">
+    <Key>
+      <PropertyRef Name="KullaniciNo" />
+    </Key>
+    <Property Name="KullaniciNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KullaniciAd" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Sifre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdSoyad" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DTarih" Type="datetime" Nullable="true" />
+    <Property Name="Telefon" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Görev" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Adres" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Maas" Type="int" Nullable="true" />
+    <Property Name="SubeNo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MusteriSet">
+    <Key>
+      <PropertyRef Name="MusteriNo" />
+    </Key>
+    <Property Name="MusteriNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdSoyad" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DTarih" Type="datetime" Nullable="true" />
+    <Property Name="Telefon" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Adres" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SubeNo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubelerSet">
+    <Key>
+      <PropertyRef Name="SubeNo" />
+    </Key>
+    <Property Name="SubeNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CalisanSayisi" Type="int" Nullable="true" />
+    <Property Name="Adres" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OdaSayisi" Type="int" Nullable="true" />
+    <Property Name="Telefon" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SubeAd" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <Association Name="SubelerKullanici">
+    <End Role="Subeler" Type="Model1.Store.SubelerSet" Multiplicity="1" />
+    <End Role="Kullanici" Type="Model1.Store.KullaniciSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subeler">
+        <PropertyRef Name="SubeNo" />
+      </Principal>
+      <Dependent Role="Kullanici">
+        <PropertyRef Name="SubeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubelerMusteri">
+    <End Role="Subeler" Type="Model1.Store.SubelerSet" Multiplicity="1" />
+    <End Role="Musteri" Type="Model1.Store.MusteriSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subeler">
+        <PropertyRef Name="SubeNo" />
+      </Principal>
+      <Dependent Role="Musteri">
+        <PropertyRef Name="SubeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

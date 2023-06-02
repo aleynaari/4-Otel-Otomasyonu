@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="KullaniciSet" EntityType="Model1.Kullanici" />
+    <EntitySet Name="MusteriSet" EntityType="Model1.Musteri" />
+    <EntitySet Name="SubelerSet" EntityType="Model1.Subeler" />
+    <AssociationSet Name="SubelerKullanici" Association="Model1.SubelerKullanici">
+      <End EntitySet="SubelerSet" Role="Subeler" />
+      <End EntitySet="KullaniciSet" Role="Kullanici" />
+    </AssociationSet>
+    <AssociationSet Name="SubelerMusteri" Association="Model1.SubelerMusteri">
+      <End EntitySet="SubelerSet" Role="Subeler" />
+      <End EntitySet="MusteriSet" Role="Musteri" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="KullaniciNo" />
+    </Key>
+    <Property Name="KullaniciNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciAd" Type="String" Nullable="false" />
+    <Property Name="Sifre" Type="String" Nullable="false" />
+    <Property Name="AdSoyad" Type="String" Nullable="true" />
+    <Property Name="DTarih" Type="DateTime" Nullable="true" />
+    <Property Name="Telefon" Type="String" Nullable="true" />
+    <Property Name="Mail" Type="String" Nullable="true" />
+    <Property Name="Görev" Type="String" Nullable="true" />
+    <Property Name="Adres" Type="String" Nullable="true" />
+    <Property Name="Maas" Type="Int32" Nullable="true" />
+    <Property Name="SubeNo" Nullable="false" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Musteri">
+    <Key>
+      <PropertyRef Name="MusteriNo" />
+    </Key>
+    <Property Name="MusteriNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdSoyad" Type="String" Nullable="true" />
+    <Property Name="DTarih" Type="DateTime" Nullable="true" />
+    <Property Name="Telefon" Type="String" Nullable="true" />
+    <Property Name="Adres" Type="String" Nullable="true" />
+    <Property Name="SubeNo" Nullable="false" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Subeler">
+    <Key>
+      <PropertyRef Name="SubeNo" />
+    </Key>
+    <Property Name="SubeNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CalisanSayisi" Type="Int32" Nullable="true" />
+    <Property Name="Adres" Type="String" Nullable="true" />
+    <Property Name="OdaSayisi" Type="Int32" Nullable="true" />
+    <Property Name="Telefon" Type="String" Nullable="true" />
+    <Property Name="SubeAd" Type="String" Nullable="true" />
+  </EntityType>
+  <Association Name="SubelerKullanici">
+    <End Type="Model1.Subeler" Multiplicity="1" Role="Subeler" />
+    <End Type="Model1.Kullanici" Multiplicity="*" Role="Kullanici" />
+    <ReferentialConstraint>
+      <Principal Role="Subeler">
+        <PropertyRef Name="SubeNo" />
+      </Principal>
+      <Dependent Role="Kullanici">
+        <PropertyRef Name="SubeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubelerMusteri">
+    <End Type="Model1.Subeler" Multiplicity="1" Role="Subeler" />
+    <End Type="Model1.Musteri" Multiplicity="*" Role="Musteri" />
+    <ReferentialConstraint>
+      <Principal Role="Subeler">
+        <PropertyRef Name="SubeNo" />
+      </Principal>
+      <Dependent Role="Musteri">
+        <PropertyRef Name="SubeNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
